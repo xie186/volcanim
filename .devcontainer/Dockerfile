@@ -18,12 +18,7 @@ RUN apt-get update --quiet && \
 # Verify installation
 RUN sox --version
 
-RUN pip3 install matplotlib==3.10.0 && \
-    pip3 install cmasher==1.9.2 && \
-    pip3 install networkx==3.4.2 && \
-    pip3 install scipy==1.15.1 && \
-    pip3 install seaborn==0.13.2 && \
-    pip3 install "manim-voiceover[all]"
+RUN pip3 install pydeseq2==0.5.0
 
 USER manimuser
 
