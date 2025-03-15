@@ -104,20 +104,6 @@ class EnhancedVolcano(Scene):
         # Cap -log10(pvalue) values at max_y_value
         df['-log10pval'] = df['-log10pval'].clip(upper=max_y_value)
         
-        
-        # axes = Axes(
-        #     x_range=[-3, 3, 1],
-        #     y_range=[0, max_y_value + 1, 5],
-        #     axis_config={"include_tip": False},
-        #     x_axis_config={"numbers_to_include": [-3, 0, 3]},
-        #     y_axis_config={"numbers_to_include": [0, max_y_value]},
-        # ).add_coordinates()
-        # logging.info(f'axes.y_axis.number_to_point(0): {axes.y_axis.number_to_point(0)}')
-        # logging.info(np.array([-3, 0, 0]))
-        # axes.y_axis.move_to(axes.c2p(np.array([-3, 0])))
-        # labels = axes.get_axis_labels("Log2 Fold Change", "-log10(p-value)")
-        # self.play(Create(axes), Write(labels))
-        
         plane = NumberPlane(
             x_range = (-4, 4),
             y_range = (0, max_y_value, 10),
