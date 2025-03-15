@@ -18,7 +18,9 @@ def main():
     parser.add_argument("--lfc", type=float, default=1.0, help="Log2 fold change threshold for significance.")
     
     args = parser.parse_args()
-    generate_volcano_plot(args.input_file, args.output_file, args.resolution, args.pval, args.lfc)
+    generate_volcano_plot(args.input_file, args.output_file, 
+                          args.resolution, args.pval, 
+                          args.lfc, args.highlight)
 
 if __name__ == "__main__":
     main()
