@@ -1,7 +1,7 @@
 from manim import *
 
 def create_legend(plane):
-    buff_var = 0.25
+    buff_var = 0.3
     dot_notsig = Dot(color=GRAY, radius=0.05).next_to(plane, UP, buff=buff_var)
     dot_notsig.shift(4*LEFT) 
     label_nosig = Text("Non-significant & |Log2FC| < 2", font_size=24).scale(0.65).\
