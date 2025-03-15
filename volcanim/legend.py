@@ -12,10 +12,10 @@ def create_legend(plane):
     label_high_lfc_non_sig = Text("Log2FC", font_size=24).scale(0.65).\
                 rotate(0 * DEGREES).next_to(dot_high_lfc_non_sig, RIGHT, buff=0.1)
     dot_high_lfc_sig = Dot(color=RED, radius=0.05).next_to(plane, UP, buff=buff_var)
-    label_high_lfc_sig = Text("p_val", font_size=24).scale(0.65).\
+    label_high_lfc_sig = Text("p_val & Log2FC", font_size=24).scale(0.65).\
                 rotate(0 * DEGREES).next_to(dot_high_lfc_sig, RIGHT, buff=0.1)
     dot_low_lfc_sig = Dot(color=GREEN, radius=0.05).next_to(plane, UP, buff=buff_var + 0.2)
-    label_low_lfc_sig = Text("p_val & Log2FC", font_size=24).scale(0.65).\
+    label_low_lfc_sig = Text("p_val", font_size=24).scale(0.65).\
                 rotate(0 * DEGREES).next_to(dot_low_lfc_sig, RIGHT, buff=0.1)
     
     legend = VGroup(
