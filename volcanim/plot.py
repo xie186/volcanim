@@ -79,12 +79,14 @@ def plot_w_VGroup(df, plane, pval_threshold=0.05, lfc_threshold=1.0):
 
 
 class EnhancedVolcano(Scene):
-    def __init__(self, data_file, output_file, resolution, pval_threshold=0.05, lfc_threshold=1.0):
+    def __init__(self, data_file, output_file, resolution, 
+                 pval_threshold=0.05, lfc_threshold=1.0, highlight_genes=""):
         self.data_file = data_file
         self.output_file = output_file
         self.resolution = resolution
         self.pval_threshold = pval_threshold
         self.lfc_threshold = lfc_threshold
+        self.highlight_genes = highlight_genes
         super().__init__()
     
     def construct(self):
@@ -167,17 +169,17 @@ class EnhancedVolcano(Scene):
         #self.play(LaggedStart(*[FadeIn(p) for p in non_sig_points], lag_ratio=0.01))
         non_sig_batches, high_lfc_non_sig_batches, high_lfc_sig_batches, low_lfc_sig_batches = plot_w_PMobject_batch(df, plane, self.pval_threshold, self.lfc_threshold)  
         # Use LaggedStart for animating points
-        self.play(LaggedStart(*[FadeIn(p) for p in non_sig_batches], lag_ratio=0.01))
+        self.play(LaggedStart(*[FadeIn(p) for p in non_sig_batches], lag_ratio=0.017))
 
         for batch in high_lfc_non_sig_batches:
-            self.play(FadeIn(batch), run_time=0.01)
+            self.play(FadeIn(batch), run_time=0.017)
         for batch in low_lfc_sig_batches:
-            self.play(FadeIn(batch), run_time=0.01)   
+            self.play(FadeIn(batch), run_time=0.017)   
         for batch in high_lfc_sig_batches:
-            self.play(FadeIn(batch), run_time=0.2)
+            self.play(FadeIn(batch), run_time=0.22)
         # 'MT2A,ADAMTS1,FGD4'
-        gene_names = 'MT2A,ADAMTS1,FGD4'
-        draw_gene_dots(df, gene_names, plane, self)
+        #highlight_genes = 'MT2A,ADAMTS1,FGD4'
+        draw_gene_dots(df, self.highlight_genes, plane, self)
         
         self.wait(2)
         
@@ -188,5 +190,5 @@ def generate_volcano_plot(input_file, output_file,
                           lfc_threshold=1.0, highlight_genes=""):
     scene = EnhancedVolcano(input_file, output_file, 
                             resolution, pval_threshold, 
-                            lfc_threshold)
+                            lfc_threshold, highlight_genes)
     scene.render()
