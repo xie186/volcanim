@@ -121,8 +121,8 @@ class EnhancedVolcano(Scene):
                 "stroke_opacity": 0.3
             }
         )
-        plane.shift(LEFT)
-        #plane.center()
+        #plane.shift(LEFT)
+        plane.center()
         # Create a new y-axis line and position it at the leftmost point
         new_y_axis = Line(
             start=plane.coords_to_point(-4, 0),
