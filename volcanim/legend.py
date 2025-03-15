@@ -1,6 +1,24 @@
 from manim import *
 
 def create_legend(plane):
+    """
+    Create a legend for the Enhanced Volcano plot.
+
+    This function generates a legend that explains the different categories of points in the plot.
+    Each category is represented by a colored dot and a corresponding label.
+
+    Parameters:
+    plane (NumberPlane): The coordinate plane on which the legend will be placed.
+
+    Returns:
+    VGroup: A Manim VGroup containing the legend elements (dots and labels).
+
+    Legend Categories:
+    - Non-significant: Points that are not significant (colored in gray).
+    - Log2FC: Points with a log2 fold change greater than or equal to 2 but not significant (colored in yellow).
+    - p_val & Log2FC: Points that are significant with a log2 fold change greater than or equal to 2 (colored in red).
+    - p_val: Points that are significant but with a log2 fold change less than 2 (colored in green).
+    """
     buff_var = 0.3
     dot_notsig = Dot(color=GRAY, radius=0.05).next_to(plane, UP, buff=buff_var)
     dot_notsig.shift(4*LEFT) 
