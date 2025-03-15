@@ -38,6 +38,8 @@ def repel_labels(labels, arrows, min_distance=0.5):
 
 
 def draw_gene_dots(df, gene_list, plane, scene):
+    if not gene_list:
+        return # exit the function if no genes are provided
     gene_names = gene_list.split(",")
     labels = []
     arrows = []
