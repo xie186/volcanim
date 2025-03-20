@@ -1,17 +1,19 @@
 from setuptools import setup, find_packages
-
+    
 setup(
     name="volcanim",
     version="0.1.0",
     packages=find_packages(),
     install_requires=[
-        "numpy",
-        "pandas",
-        "manim",
+        "manim==0.19.0",
+        "pandas==1.3.3",
+        "numpy==1.21.2",
+        "pytest==8.3.5",
+        "pytest-cov==4.0.0",
     ],
     entry_points={
         "console_scripts": [
-            "volcanim = volcanim.cli:main",
+            "volcanim=volcanim.cli:main",
         ],
     },
     author="Shaojun Xie",
