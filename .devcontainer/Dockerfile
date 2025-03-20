@@ -18,7 +18,9 @@ RUN apt-get update --quiet && \
 # Verify installation
 RUN sox --version
 
-RUN pip3 install pydeseq2==0.5.0
+RUN pip3 install pydeseq2==0.5.0 && \
+    pip3 install pytest==8.3.5 && \
+    pip3 install pytest-cov==4.0.0
 
 USER manimuser
 
