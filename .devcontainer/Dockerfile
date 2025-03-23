@@ -19,6 +19,8 @@ RUN apt-get update --quiet && \
 RUN sox --version
 
 RUN pip3 install --no-cache-dir \
+    pandas==2.2.3 \
+    matplotlib==3.4.3 \
     pytest==8.3.5 \
     pytest-cov==4.0.0 \
     twine==6.1.0
