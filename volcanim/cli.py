@@ -1,5 +1,14 @@
 import argparse
-from .plot import generate_volcano_plot
+import sys
+# Handle imports for both direct execution and package execution
+if __name__ == "__main__" and __package__ is None:
+    # Direct execution
+    from os import path
+    sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
+    from volcanim.plot import generate_volcano_plot
+else:
+    # Package execution
+    from .plot import generate_volcano_plot
 
 def main():
     parser = argparse.ArgumentParser(description="Generate an animated Enhanced Volcano plot using Manim.")
