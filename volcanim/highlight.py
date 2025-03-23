@@ -6,8 +6,7 @@ def homotopy(x, y, z, t):
         return (x, y + progress * 0.2 * np.sin(x), z)
     else:
         wave_progress = (t - 0.25) / 0.75
-        return (x, y + 0.2 * np.sin(x + 10 * wave_progress), z)        
-    
+        return (x, y + 0.2 * np.sin(x + 10 * wave_progress), z)
 # Reference:
 # https://stackoverflow.com/questions/76241182/in-manim-how-can-i-combine-fadein-and-fadeout-in-one-animation
 def highlight_text(gene_name, dot):
