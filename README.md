@@ -1,6 +1,12 @@
-# volcanim
+# Volcanim
 
-Volcanim is a tool for creating animated volcano plots from DESeq2 results.
+Volcanim is a tool for creating animated volcano plots from DESeq2 results using Manim. It can be used both as a command-line tool and as a library.
+
+## Features
+
+- Generate animated volcano plots from DESeq2 results.
+- Highlight specific genes in the plot.
+- Create legends to explain different categories of points in the plot.
 
 ## Installation
 
