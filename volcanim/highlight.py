@@ -31,7 +31,7 @@ def highlight_text(gene_name, dot):
             ).shift(2*RIGHT).set_opacity(1)
     return txt_3_start, txt_3_middle, txt_3_end
 
-def repel_labels(labels, arrows, min_distance=0.5):
+def repel_labels(labels, arrows, vc_scene, min_distance=0.5):
     for i, label1 in enumerate(labels):
         for j, label2 in enumerate(labels):
             if i != j:
@@ -43,9 +43,10 @@ def repel_labels(labels, arrows, min_distance=0.5):
     # Update arrows
     for arrow, label in zip(arrows, labels):
         arrow.put_start_and_end_on(arrow.get_start(), label.get_left())
+    for i, label in enumerate(labels):
+        vc_scene.play(Homotopy(homotopy, label, rate_func= linear, run_time=2))
 
-
-def draw_gene_dots(df, gene_list, plane, scene):
+def draw_gene_dots(df, gene_list, plane, vc_scene):
     if not gene_list:
         return # exit the function if no genes are provided
     gene_names = gene_list.split(",")
@@ -66,14 +67,15 @@ def draw_gene_dots(df, gene_list, plane, scene):
         txt_3_end.next_to(dot, RIGHT, buff=0.1)
         
         # Add the dot and text to the scene
-        scene.add(dot, txt_3_start, txt_3_middle, txt_3_end)
+        vc_scene.add(dot, txt_3_start, txt_3_middle, txt_3_end)
         labels.append(txt_3_start)
         # Create an arrow connecting the dot and the text
         arrow = Arrow(start=dot.get_right(), end=txt_3_start.get_left(), buff=0.1, color=WHITE)
         arrows.append(arrow)
-        scene.add(arrow)
+        vc_scene.add(arrow)
+        vc_scene.add(dot, txt_3_start, arrow)
         # Animate the text
-        scene.play(FadeIn(dot), FadeIn(txt_3_start), FadeIn(arrow))
+        #vc_scene.play(FadeIn(dot), FadeIn(txt_3_start), FadeIn(arrow))
     # Apply repel effect to labels
-    repel_labels(labels, arrows)
+    repel_labels(labels, arrows, vc_scene)
         
